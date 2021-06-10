@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.19)
+project(VirtualProtectVMPBypass)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+set(SOURCE src/main.cpp)
+add_library(VirtualProtectVMPBypass SHARED ${SOURCE})
