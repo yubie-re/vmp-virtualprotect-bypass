@@ -7,7 +7,7 @@ void vmp_virtualprotect_check_disable()
     auto ntdll = GetModuleHandleA("ntdll.dll");
 #if _WIN64
     BYTE callcode = ((BYTE *)GetProcAddress(ntdll, "NtQuerySection"))[4] - 1; // Since the syscall code is partially corrupted, we have to figure out what it is (always 1 less than NtQuerySection) since it changes based on windows version.
-    BYTE restore[] = {0x4C, 0x8B, 0xD1, 0xB8, callcode}; // x64 ntdll
+    BYTE restore[] = {0x4C, 0x8B, 0xD1, 0xB8, callcode};                      // x64 ntdll
 #else
     BYTE callcode = ((BYTE *)GetProcAddress(ntdll, "NtQuerySection"))[1] - 1;
     BYTE restore[] = {0xB8, callcode, 0x00, 0x00, 0x00}; // x86 ntdll
